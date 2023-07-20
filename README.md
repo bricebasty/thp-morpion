@@ -1,10 +1,6 @@
 <div align="center" id="top"> 
   <img src="tictactoe.gif" alt="Thp Morpion" />
 
-&#xa0;
-
-<!-- <a href="https://thpmorpion.netlify.app">Demo</a> -->
-
 </div>
 
 <h1 align="center">Thp Morpion</h1>
@@ -21,12 +17,12 @@
 </p>
 
 <p align="center">
-  <a href="#dart-about">About</a>   |   
-  <a href="#sparkles-features">Features</a>   |  
-  <a href="#rocket-technologies">Technologies</a>   |  
+  <a href="#-about">About</a>   |   
+  <a href="#-features">Features</a>   |  
+  <a href="#-technologies">Technologies</a>   |  
   <a href="#-requirements">Requirements</a>   |  
   <a href="#-starting">Starting</a>   |  
-  <a href="#memo-license">License</a>   |  
+  <a href="#-license">License</a>   |  
   <a href="https://github.com/bricebasty" target="_blank">Author</a>
 </p>
 
