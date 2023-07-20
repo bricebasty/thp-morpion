@@ -16,7 +16,7 @@ class Game
     welcome # Welcome message for the players
     (@player1 = Player.new(1, 'X')).ask_name  # Create and ask for Player 1's name
     (@player2 = Player.new(2, 'O')).ask_name  # Create and ask for Player 2's name
-    puts "\n#{BRIGHT_RED}#{BOLD}#{RAPID_BLINK}Let's Fight !#{RESET}"
+    puts "\n#{B_RED}#{BOLD}#{RAPID_BLINK}Let's Fight !#{RESET}"
     @games = 0
     @current_player = @player1 # The game starts with Player 1's turn
     @board = Board.new # Initialize a new game board
@@ -31,11 +31,11 @@ class Game
   def welcome
     puts <<-ACCUEIL
 
-    #{BRIGHT_BLUE_BG}#{BLACK}#{BOLD}-----------------------------------------------------#{RESET}
-    #{BRIGHT_BLUE_BG}#{BLACK}#{BOLD}|           Bienvenue sur 'LE MORPION' !            |#{RESET}
-    #{BRIGHT_BLUE_BG}#{BLACK}#{BOLD}|    Le but du jeu est d'aligner 3 de tes signes    |#{RESET}
-    #{BRIGHT_BLUE_BG}#{BLACK}#{BOLD}|     à l'horizontale, verticale ou en diagonale    |#{RESET}
-    #{BRIGHT_BLUE_BG}#{BLACK}#{BOLD}-----------------------------------------------------#{RESET}
+    #{B_BLUE_BG}#{BLACK}#{BOLD}-----------------------------------------------------#{RESET}
+    #{B_BLUE_BG}#{BLACK}#{BOLD}|           Bienvenue sur 'LE MORPION' !            |#{RESET}
+    #{B_BLUE_BG}#{BLACK}#{BOLD}|    Le but du jeu est d'aligner 3 de tes signes    |#{RESET}
+    #{B_BLUE_BG}#{BLACK}#{BOLD}|     à l'horizontale, verticale ou en diagonale    |#{RESET}
+    #{B_BLUE_BG}#{BLACK}#{BOLD}-----------------------------------------------------#{RESET}
     ACCUEIL
   end
 
@@ -63,7 +63,7 @@ class Game
 
   # Asks whose turn is next
   def ask_whos_next
-    puts "\nC'est le tour de #{BOLD}#{BRIGHT_CYAN}#{@current_player.name}#{RESET}"
+    puts "\nC'est le tour de #{BOLD}#{B_CYAN}#{@current_player.name}#{RESET}"
   end
 
   # Shows the current state of the game board
@@ -73,19 +73,17 @@ class Game
 
   # Asks the current player for the cell they want to mark
   def ask_which_cell
-    puts "\n#{BOLD}#{BRIGHT_MAGENTA}Choisis la case que tu veux cocher (entre 1 et 9)#{RESET}"
-    print "#{BRIGHT_YELLOW}> #{RESET}"
+    puts "\n#{BOLD}#{B_MAGENTA}Choisis la case que tu veux cocher (entre 1 et 9)#{RESET}"
+    print "#{B_YELLOW}> #{RESET}"
     loop do
       input = gets.chomp.to_i
       if input.between?(1, 9)
         return input unless @board.cells[input - 1].match?(/[XO]/)
-
-        puts "#{BRIGHT_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
-
+        puts "#{B_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
       else
-        puts "#{BRIGHT_RED}#{BOLD}Entre un chiffre entre 1 et 9.#{RESET}"
+        puts "#{B_RED}#{BOLD}Entre un chiffre entre 1 et 9.#{RESET}"
       end
-      print "#{BRIGHT_YELLOW}> #{RESET}"
+      print "#{B_YELLOW}> #{RESET}"
     end
   end
 
@@ -102,38 +100,38 @@ class Game
   # Shows the number of games played so far
   def show_games_played
     @games += 1
-    puts "\n#{BRIGHT_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
+    puts "\n#{B_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
   end
 
   # Shows the current number of wins for each player
   def show_winning_count
     p1 = @player1
     p2 = @player2
-    p1_color = p1.wins > p2.wins ? BRIGHT_GREEN : BRIGHT_RED
-    p2_color = p2.wins > p1.wins ? BRIGHT_GREEN : BRIGHT_RED
+    p1_color = p1.wins > p2.wins ? B_GREEN : B_RED
+    p2_color = p2.wins > p1.wins ? B_GREEN : B_RED
 
     puts "\n#{p1.name} #{p1_color}#{p1.wins}#{RESET} - #{p2_color}#{p2.wins}#{RESET} #{p2.name}"
   end
 
   # Ends the game, declaring the winner or if it's a tie
   def end
-    puts "\n#{BRIGHT_BLUE}#{BOLD}La partie est finie#{RESET}"
+    puts "\n#{B_BLUE}#{BOLD}La partie est finie#{RESET}"
     if @winning_player == @player1
-      puts "\n#{BOLD}#{BRIGHT_GREEN}#{RAPID_BLINK}#{@player1.name} a gagné#{RESET}"
+      puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player1.name} a gagné#{RESET}"
       @player1.wins += 1
     elsif @winning_player == @player2
-      puts "\n#{BOLD}#{BRIGHT_GREEN}#{RAPID_BLINK}#{@player2.name} a gagné#{RESET}"
+      puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player2.name} a gagné#{RESET}"
       @player2.wins += 1
     else
-      puts "\n#{BRIGHT_WHITE_BG}#{BLACK}#{SLOW_BLINK}MATCH NUL"
+      puts "\n#{B_WHITE_BG}#{BLACK}#{SLOW_BLINK}MATCH NUL"
     end
   end
 
   # Asks if the players want to retry
   def retry?
     loop do
-      puts "\n#{BRIGHT_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
-      print "#{BRIGHT_YELLOW}> #{RESET}"
+      puts "\n#{B_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
+      print "#{B_YELLOW}> #{RESET}"
       input = gets.chomp.downcase
       case input
       when 'o', 'oui'

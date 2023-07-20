@@ -69,16 +69,16 @@ class Board
 
   def mappings
     # Mapping of cell values to their colored console output
-    { 'X' => [" #{BRIGHT_RED}\\   /#{RESET} ", "  #{BRIGHT_RED}>-<#{RESET}  ", " #{BRIGHT_RED}/   \\#{RESET} "],
-      'O' => ["  #{BRIGHT_GREEN}---#{RESET}  ", " #{BRIGHT_GREEN}|   |#{RESET} ", "  #{BRIGHT_GREEN}---#{RESET}  "],
-      '1' => ['       ', "   #{BRIGHT_YELLOW}1#{RESET}   ", '       '],
-      '2' => ['       ', "   #{BRIGHT_YELLOW}2#{RESET}   ", '       '],
-      '3' => ['       ', "   #{BRIGHT_YELLOW}3#{RESET}   ", '       '],
-      '4' => ['       ', "   #{BRIGHT_YELLOW}4#{RESET}   ", '       '],
-      '5' => ['       ', "   #{BRIGHT_YELLOW}5#{RESET}   ", '       '],
-      '6' => ['       ', "   #{BRIGHT_YELLOW}6#{RESET}   ", '       '],
-      '7' => ['       ', "   #{BRIGHT_YELLOW}7#{RESET}   ", '       '],
-      '8' => ['       ', "   #{BRIGHT_YELLOW}8#{RESET}   ", '       '],
-      '9' => ['       ', "   #{BRIGHT_YELLOW}9#{RESET}   ", '       '] }
+    { 'X' => [" #{B_RED}\\   /#{RESET} ", "  #{B_RED}>-<#{RESET}  ", " #{B_RED}/   \\#{RESET} "],
+      'O' => ["  #{B_GREEN}---#{RESET}  ", " #{B_GREEN}|   |#{RESET} ", "  #{B_GREEN}---#{RESET}  "],
+      '1' => ['       ', "   #{B_YELLOW}1#{RESET}   ", '       '],
+      '2' => ['       ', "   #{B_YELLOW}2#{RESET}   ", '       '],
+      '3' => ['       ', "   #{B_YELLOW}3#{RESET}   ", '       '],
+      '4' => ['       ', "   #{B_YELLOW}4#{RESET}   ", '       '],
+      '5' => ['       ', "   #{B_YELLOW}5#{RESET}   ", '       '],
+      '6' => ['       ', "   #{B_YELLOW}6#{RESET}   ", '       '],
+      '7' => ['       ', "   #{B_YELLOW}7#{RESET}   ", '       '],
+      '8' => ['       ', "   #{B_YELLOW}8#{RESET}   ", '       '],
+      '9' => ['       ', "   #{B_YELLOW}9#{RESET}   ", '       '] }
   end
 end
