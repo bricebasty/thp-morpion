@@ -28,7 +28,7 @@ class Player
   end
 
   # Draws the Player's sign in a cell on the board
-  def draws_in_cell(board, number)
+  def draw_in_cell(board, number)
     board.update_cell(number, @sign)
   end
 end

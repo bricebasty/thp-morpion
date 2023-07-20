@@ -23,7 +23,7 @@ class Game
   end
 
   # Resets the game board for a new game
-  def resets_board
+  def reset_board
     @board.reset
   end
 
@@ -62,17 +62,17 @@ class Game
   end
 
   # Asks whose turn is next
-  def asks_whos_next
+  def ask_whos_next
     puts "\nC'est le tour de #{BOLD}#{BRIGHT_CYAN}#{@current_player.name}#{RESET}"
   end
 
   # Shows the current state of the game board
-  def shows_board
+  def show_board
     @board.show
   end
 
   # Asks the current player for the cell they want to mark
-  def asks_which_cell
+  def ask_which_cell
     puts "\n#{BOLD}#{BRIGHT_MAGENTA}Choisis la case que tu veux cocher (entre 1 et 9)#{RESET}"
     print "#{BRIGHT_YELLOW}> #{RESET}"
     loop do
@@ -90,8 +90,8 @@ class Game
   end
 
   # Updates the chosen cell with the current player's sign
-  def makes_current_player_draw_in_cell(number)
-    @current_player.draws_in_cell(@board, number)
+  def make_current_player_draw_in_cell(number)
+    @current_player.draw_in_cell(@board, number)
   end
 
   # Switches the turn to the other player
@@ -100,13 +100,13 @@ class Game
   end
 
   # Shows the number of games played so far
-  def shows_games_played
+  def show_games_played
     @games += 1
     puts "\n#{BRIGHT_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
   end
 
   # Shows the current number of wins for each player
-  def shows_winning_count
+  def show_winning_count
     p1 = @player1
     p2 = @player2
     p1_color = p1.wins > p2.wins ? BRIGHT_GREEN : BRIGHT_RED
@@ -116,7 +116,7 @@ class Game
   end
 
   # Ends the game, declaring the winner or if it's a tie
-  def ends
+  def end
     puts "\n#{BRIGHT_BLUE}#{BOLD}La partie est finie#{RESET}"
     if @winning_player == @player1
       puts "\n#{BOLD}#{BRIGHT_GREEN}#{RAPID_BLINK}#{@player1.name} a gagné#{RESET}"
