@@ -16,14 +16,10 @@ class Player
   end
 
   def ask_name
-    puts "\nQuel est ton prénom, #{BOLD}#{GREEN}Joueur #{@number} #{WHITE}?#{RESET}"
+    puts "\nQuel est ton prénom, #{BOLD}#{BRIGHT_CYAN}Joueur #{@number} #{BRIGHT_WHITE}?#{RESET}"
     print "#{BOLD}#{YELLOW}> #{RESET}"
     @name = gets.chomp
-    puts "\nTrès bien #{BOLD}#{CYAN}#{@name}#{RESET}, ton signe est #{BOLD}#{RED}#{@sign}#{RESET}"
-  end
-
-  def has_won?
-
+    puts "\nTrès bien #{BOLD}#{BRIGHT_CYAN}#{@name}#{RESET}, ton signe est #{BOLD}#{@sign == "X" ? BRIGHT_RED : BRIGHT_GREEN}#{@sign}#{RESET}"
   end
 
   def draws_in_cell(board, number)

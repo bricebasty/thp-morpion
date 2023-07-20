@@ -32,3 +32,23 @@ MAGENTA_BG = "\e[45m"
 CYAN_BG = "\e[46m"
 WHITE_BG = "\e[47m"
 DEFAULT_BG = "\e[49m"
+
+# Text color intensity
+BRIGHT_BLACK = "\e[90m"
+BRIGHT_RED = "\e[91m"
+BRIGHT_GREEN = "\e[92m"
+BRIGHT_YELLOW = "\e[93m"
+BRIGHT_BLUE = "\e[94m"
+BRIGHT_MAGENTA = "\e[95m"
+BRIGHT_CYAN = "\e[96m"
+BRIGHT_WHITE = "\e[97m"
+
+# Background color intensity
+BRIGHT_BLACK_BG = "\e[100m"
+BRIGHT_RED_BG = "\e[101m"
+BRIGHT_GREEN_BG = "\e[102m"
+BRIGHT_YELLOW_BG = "\e[103m"
+BRIGHT_BLUE_BG = "\e[104m"
+BRIGHT_MAGENTA_BG = "\e[105m"
+BRIGHT_CYAN_BG = "\e[106m"
+BRIGHT_WHITE_BG = "\e[107m"
