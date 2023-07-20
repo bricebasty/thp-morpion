@@ -36,9 +36,9 @@ class Game
   end
 
   def is_finished?
-    WINNING_COMBINATIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
-    WINNING_COMBINATIONS.each do |combination|
+    winning_combinations.each do |combination|
       if combination.all? { |i| @board.cells[i] == "X" }
         @winning_player = @player1
         return true
