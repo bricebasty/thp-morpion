@@ -24,8 +24,8 @@
   <a href="#dart-about">About</a>   |   
   <a href="#sparkles-features">Features</a>   |  
   <a href="#rocket-technologies">Technologies</a>   |  
-  <a href="#white_check_mark-requirements">Requirements</a>   |  
-  <a href="#checkered_flag-starting">Starting</a>   |  
+  <a href="#-requirements">Requirements</a>   |  
+  <a href="#-starting">Starting</a>   |  
   <a href="#memo-license">License</a>   |  
   <a href="https://github.com/bricebasty" target="_blank">Author</a>
 </p>
@@ -90,8 +90,6 @@ $ ruby app.rb
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-Made with ❤️ by `<a href="https://github.com/bricebasty" target="_blank">`Brice Basty `</a>`
+Made with ❤️ by <a href="https://github.com/bricebasty" target="_blank">Brice Basty </a>
 
-&#xa0;
-
-`<a href="#top">`Back to top `</a>`
+<a href="#top">Back to top </a>
