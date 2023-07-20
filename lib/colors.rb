@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RESET = "\e[0m"
 BOLD = "\e[1m"
 FAINT = "\e[2m"

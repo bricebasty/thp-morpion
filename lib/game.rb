@@ -39,16 +39,17 @@ class Game
     winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
     winning_combinations.each do |combination|
-      if combination.all? { |i| @board.cells[i] == "X" }
+      if combination.all? { |i| @board.cells[i] == 'X' }
         @winning_player = @player1
         return true
-      elsif combination.all? { |i| @board.cells[i] == "O" }
+      elsif combination.all? { |i| @board.cells[i] == 'O' }
         @winning_player = @player2
         return true
       end
     end
     return true if @board.cells.all? { |cell| /[XO]/.match?(cell) }
-    return false
+
+    false
   end
 
   def asks_whos_next
@@ -65,8 +66,8 @@ class Game
     loop do
       input = gets.chomp.to_i
       if @board.cells[input - 1].match?(/[XO]/)
-      puts "#{BRIGHT_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
-      print "#{BRIGHT_YELLOW}> #{RESET}"
+        puts "#{BRIGHT_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
+        print "#{BRIGHT_YELLOW}> #{RESET}"
       elsif input.between?(1, 9)
         return input
       else
@@ -81,7 +82,7 @@ class Game
   end
 
   def switch_player
-    @current_player = (@current_player == @player1) ? @player2 : @player1
+    @current_player = @current_player == @player1 ? @player2 : @player1
   end
 
   def shows_games_played
@@ -90,7 +91,7 @@ class Game
   end
 
   def shows_winning_count
-    puts "\n#{@player1.name} #{@player1.wins > @player2.wins ? BRIGHT_GREEN : BRIGHT_RED }#{@player1.wins}#{RESET} - #{@player2.wins > @player1.wins ? BRIGHT_GREEN : BRIGHT_RED }#{@player2.wins}#{RESET} #{@player2.name}"
+    puts "\n#{@player1.name} #{@player1.wins > @player2.wins ? BRIGHT_GREEN : BRIGHT_RED}#{@player1.wins}#{RESET} - #{@player2.wins > @player1.wins ? BRIGHT_GREEN : BRIGHT_RED}#{@player2.wins}#{RESET} #{@player2.name}"
   end
 
   def ends
@@ -107,14 +108,14 @@ class Game
   end
 
   def retry?
-    while true
+    loop do
       puts "\n#{BRIGHT_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
       print "#{BRIGHT_YELLOW}> #{RESET}"
       input = gets.chomp.downcase
       case input
-      when "o", "oui"
+      when 'o', 'oui'
         return true
-      when "n", "non"
+      when 'n', 'non'
         return false
       else
         puts "Réponds avec 'o', 'oui', 'n', ou 'non'."
