@@ -12,27 +12,13 @@
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/bricebasty/thp-morpion?color=56BEB8">
 
-`<img alt="Github language count" src="https://img.shields.io/github/languages/count/bricebasty/thp-morpion?color=56BEB8">`
+<img alt="Github language count" src="https://img.shields.io/github/languages/count/bricebasty/thp-morpion?color=56BEB8">
 
-`<img alt="Repository size" src="https://img.shields.io/github/repo-size/bricebasty/thp-morpion?color=56BEB8">`
+<img alt="Repository size" src="https://img.shields.io/github/repo-size/bricebasty/thp-morpion?color=56BEB8">
 
 <img alt="License" src="https://img.shields.io/github/license/bricebasty/thp-morpion?color=56BEB8">
 
-<!-- <img alt="Github issues" src="https://img.shields.io/github/issues/bricebasty/thp-morpion?color=56BEB8" /> -->
-
-<!-- <img alt="Github forks" src="https://img.shields.io/github/forks/bricebasty/thp-morpion?color=56BEB8" /> -->
-
-<!-- <img alt="Github stars" src="https://img.shields.io/github/stars/bricebasty/thp-morpion?color=56BEB8" /> -->
-
 </p>
-
-<!-- Status -->
-
-<!-- <h4 align="center">
-	🚧  Thp Morpion 🚀 Under construction...  🚧
-</h4>
-
-<hr> -->
 
 <p align="center">
   <a href="#dart-about">About</a>   |   
