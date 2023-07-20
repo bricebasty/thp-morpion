@@ -4,24 +4,29 @@ require 'bundler'
 Bundler.require
 
 require_relative 'game'
+require_relative 'colors'
 
 class Player
-  attr_accessor :name, :number, :sign
+  attr_accessor :name, :number, :sign, :wins
 
-  def initialize(sign, number)
-    @sign = sign
+  def initialize(number, sign)
     @number = number
+    @sign = sign
+    @wins = 0
   end
 
   def ask_name
-    puts "\n\e[33mQuel est ton prénom, Joueur #{@number} ?\e[0m"
-    print "\e[1m\e[33m> \e[0m"
+    puts "\nQuel est ton prénom, #{BOLD}#{GREEN}Joueur #{@number} #{WHITE}?#{RESET}"
+    print "#{BOLD}#{YELLOW}> #{RESET}"
     @name = gets.chomp
+    puts "\nTrès bien #{BOLD}#{CYAN}#{@name}#{RESET}, ton signe est #{BOLD}#{RED}#{@sign}#{RESET}"
   end
 
-  def draw_in_cell(cell)
-    cell = @sign
+  def has_won?
+
+  end
+
+  def draws_in_cell(board, number)
+    board.update_cell(number, @sign)
   end
 end
-
-# draw_in_cell(board.@cases)

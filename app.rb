@@ -8,19 +8,17 @@ require_relative 'lib/game'
 require_relative 'lib/board'
 require_relative 'lib/show'
 
-def welcome
-  puts <<-ACCUEIL
-  \e[46m\e[30m\e[1m-----------------------------------------------------\e[0m
-  \e[46m\e[30m\e[1m|           Bienvenue sur 'LE MORPION' !            |\e[0m
-  \e[46m\e[30m\e[1m|    Le but du jeu est d'aligner 3 de tes signes    |\e[0m
-  \e[46m\e[30m\e[1m|     à l'horizontale, verticale ou en diagonale    |\e[0m
-  \e[46m\e[30m\e[1m-----------------------------------------------------\e[0m
-  ACCUEIL
-end
-
-welcome
 game = Game.new
 
+until game.is_finished?
+  game.asks_whos_next
+  game.shows_board
+  game.makes_current_player_draw_in_cell(game.asks_which_cell)
+  game.shows_board
+  game.switch_player
+end
+
+game.ends_and_asks
 
 # while game.is_ongoing?
 
