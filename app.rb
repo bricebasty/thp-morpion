@@ -6,7 +6,6 @@ Bundler.require
 require_relative 'lib/player'
 require_relative 'lib/game'
 require_relative 'lib/board'
-require_relative 'lib/show'
 
 def play
   retry_flag = true
