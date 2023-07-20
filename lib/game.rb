@@ -77,15 +77,15 @@ class Game
     print "#{BRIGHT_YELLOW}> #{RESET}"
     loop do
       input = gets.chomp.to_i
-      if @board.cells[input - 1].match?(/[XO]/)
+      if input.between?(1, 9)
+        return input unless @board.cells[input - 1].match?(/[XO]/)
+
         puts "#{BRIGHT_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
-        print "#{BRIGHT_YELLOW}> #{RESET}"
-      elsif input.between?(1, 9)
-        return input
+
       else
         puts "#{BRIGHT_RED}#{BOLD}Entre un chiffre entre 1 et 9.#{RESET}"
-        print "#{BRIGHT_YELLOW}> #{RESET}"
       end
+      print "#{BRIGHT_YELLOW}> #{RESET}"
     end
   end
 
