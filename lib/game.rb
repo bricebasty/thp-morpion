@@ -7,23 +7,27 @@ require_relative 'player'
 require_relative 'board'
 require_relative 'colors'
 
+# The Game class that controls the flow of the Tic Tac Toe game
 class Game
   attr_accessor :player1, :player2, :turn
 
+  # Initializes the game, players and the game board
   def initialize
-    welcome
-    (@player1 = Player.new(1, 'X')).ask_name
-    (@player2 = Player.new(2, 'O')).ask_name
+    welcome # Welcome message for the players
+    (@player1 = Player.new(1, 'X')).ask_name  # Create and ask for Player 1's name
+    (@player2 = Player.new(2, 'O')).ask_name  # Create and ask for Player 2's name
     puts "\n#{BRIGHT_RED}#{BOLD}#{RAPID_BLINK}Let's Fight !#{RESET}"
     @games = 0
-    @current_player = @player1
-    @board = Board.new
+    @current_player = @player1 # The game starts with Player 1's turn
+    @board = Board.new # Initialize a new game board
   end
 
+  # Resets the game board for a new game
   def resets_board
     @board.reset
   end
 
+  # Prints a welcome message for the game
   def welcome
     puts <<-ACCUEIL
 
@@ -35,31 +39,39 @@ class Game
     ACCUEIL
   end
 
-  def is_finished?
+  # Checks if the game is finished by checking for winning combinations
+  def finished?
     winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    player_marks = { 'X' => @player1, 'O' => @player2 }
 
+    # Loop over each combination to see if all elements are the same
+    # If they are, that means the current player won, so we return true
     winning_combinations.each do |combination|
-      if combination.all? { |i| @board.cells[i] == 'X' }
-        @winning_player = @player1
-        return true
-      elsif combination.all? { |i| @board.cells[i] == 'O' }
-        @winning_player = @player2
-        return true
+      player_marks.each do |mark, player|
+        if combination.all? { |i| @board.cells[i] == mark }
+          @winning_player = player
+          return true
+        end
       end
     end
-    return true if @board.cells.all? { |cell| /[XO]/.match?(cell) }
 
-    false
+    # If all cells are filled and we have not returned yet, the game is a tie, return true
+    return true if @board.cells.none? { |cell| cell.match?(/[1-9]/) }
+
+    false # The game is not finished yet
   end
 
+  # Asks whose turn is next
   def asks_whos_next
     puts "\nC'est le tour de #{BOLD}#{BRIGHT_CYAN}#{@current_player.name}#{RESET}"
   end
 
+  # Shows the current state of the game board
   def shows_board
     @board.show
   end
 
+  # Asks the current player for the cell they want to mark
   def asks_which_cell
     puts "\n#{BOLD}#{BRIGHT_MAGENTA}Choisis la case que tu veux cocher (entre 1 et 9)#{RESET}"
     print "#{BRIGHT_YELLOW}> #{RESET}"
@@ -77,23 +89,33 @@ class Game
     end
   end
 
+  # Updates the chosen cell with the current player's sign
   def makes_current_player_draw_in_cell(number)
     @current_player.draws_in_cell(@board, number)
   end
 
+  # Switches the turn to the other player
   def switch_player
     @current_player = @current_player == @player1 ? @player2 : @player1
   end
 
+  # Shows the number of games played so far
   def shows_games_played
     @games += 1
     puts "\n#{BRIGHT_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
   end
 
+  # Shows the current number of wins for each player
   def shows_winning_count
-    puts "\n#{@player1.name} #{@player1.wins > @player2.wins ? BRIGHT_GREEN : BRIGHT_RED}#{@player1.wins}#{RESET} - #{@player2.wins > @player1.wins ? BRIGHT_GREEN : BRIGHT_RED}#{@player2.wins}#{RESET} #{@player2.name}"
+    p1 = @player1
+    p2 = @player2
+    p1_color = p1.wins > p2.wins ? BRIGHT_GREEN : BRIGHT_RED
+    p2_color = p2.wins > p1.wins ? BRIGHT_GREEN : BRIGHT_RED
+
+    puts "\n#{p1.name} #{p1_color}#{p1.wins}#{RESET} - #{p2_color}#{p2.wins}#{RESET} #{p2.name}"
   end
 
+  # Ends the game, declaring the winner or if it's a tie
   def ends
     puts "\n#{BRIGHT_BLUE}#{BOLD}La partie est finie#{RESET}"
     if @winning_player == @player1
@@ -107,6 +129,7 @@ class Game
     end
   end
 
+  # Asks if the players want to retry
   def retry?
     loop do
       puts "\n#{BRIGHT_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
