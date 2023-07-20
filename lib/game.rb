@@ -36,9 +36,9 @@ class Game
   end
 
   def is_finished?
-    winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    WINNING_COMBINATIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
-    winning_combinations.each do |combination|
+    WINNING_COMBINATIONS.each do |combination|
       if combination.all? { |i| @board.cells[i] == "X" }
         @winning_player = @player1
         return true
@@ -107,17 +107,18 @@ class Game
   end
 
   def retry?
-    puts "\n#{BRIGHT_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
-    print "#{BRIGHT_YELLOW}> #{RESET}"
-    input = gets.chomp.downcase
-    case input
-    when "o", "oui"
-      return true
-    when "n", "non"
-      return false
-    else
-      puts "Réponds avec 'o', 'oui', 'n', ou 'non'."
+    while true
+      puts "\n#{BRIGHT_MAGENTA}Veux-tu prendre ta revanche ? O/N#{RESET}"
       print "#{BRIGHT_YELLOW}> #{RESET}"
+      input = gets.chomp.downcase
+      case input
+      when "o", "oui"
+        return true
+      when "n", "non"
+        return false
+      else
+        puts "Réponds avec 'o', 'oui', 'n', ou 'non'."
+      end
     end
   end
 end
