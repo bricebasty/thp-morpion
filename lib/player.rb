@@ -20,10 +20,14 @@ class Player
   # Asks the Player for their name and prints a greeting message
   def ask_name
     puts "\nQuel est ton prénom, #{BOLD}#{B_CYAN}Joueur #{@number} #{B_WHITE}?#{RESET}"
+
     print "#{BOLD}#{YELLOW}> #{RESET}"
+
     @name = gets.chomp # Reads the player's input from the console
+
     greeting = "\nBienvenue #{BOLD}#{B_CYAN}#{@name}#{RESET}"
     sign = "#{BOLD}#{@sign == 'X' ? B_RED : B_GREEN}#{@sign}#{RESET}"
+
     puts "#{greeting}, ton signe est #{sign}"
   end
 
