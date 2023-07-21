@@ -41,7 +41,8 @@ class Game
 
   # Checks if the game is finished by checking for winning combinations
   def finished?
-    winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    winning_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
+                            [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     player_marks = { 'X' => @player1, 'O' => @player2 }
 
     # Loop over each combination to see if all elements are the same
@@ -73,13 +74,18 @@ class Game
 
   # Asks the current player for the cell they want to mark
   def ask_which_cell
-    puts "\n#{BOLD}#{B_MAGENTA}Choisis la case que tu veux cocher (entre 1 et 9)#{RESET}"
+    puts  "\n#{BOLD}#{B_MAGENTA}Choisis la case que tu veux cocher " \
+          "(entre 1 et 9)#{RESET}"
+
     print "#{B_YELLOW}> #{RESET}"
+
     loop do
       input = gets.chomp.to_i
       if input.between?(1, 9)
         return input unless @board.cells[input - 1].match?(/[XO]/)
-        puts "#{B_RED}#{BOLD}La case est déjà prise ! Choisis en une autre#{RESET}"
+
+        puts  "#{B_RED}#{BOLD}La case est déjà prise !" \
+              "Choisis en une autre#{RESET}"
       else
         puts "#{B_RED}#{BOLD}Entre un chiffre entre 1 et 9.#{RESET}"
       end
@@ -100,6 +106,7 @@ class Game
   # Shows the number of games played so far
   def show_games_played
     @games += 1
+
     puts "\n#{B_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
   end
 
@@ -110,17 +117,21 @@ class Game
     p1_color = p1.wins > p2.wins ? B_GREEN : B_RED
     p2_color = p2.wins > p1.wins ? B_GREEN : B_RED
 
-    puts "\n#{p1.name} #{p1_color}#{p1.wins}#{RESET} - #{p2_color}#{p2.wins}#{RESET} #{p2.name}"
+    puts  "\n#{p1.name} #{p1_color}#{p1.wins}#{RESET}" \
+          "- #{p2_color}#{p2.wins}#{RESET} #{p2.name}"
   end
 
   # Ends the game, declaring the winner or if it's a tie
   def end
     puts "\n#{B_BLUE}#{BOLD}La partie est finie#{RESET}"
+
     if @winning_player == @player1
       puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player1.name} a gagné#{RESET}"
+
       @player1.wins += 1
     elsif @winning_player == @player2
       puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player2.name} a gagné#{RESET}"
+
       @player2.wins += 1
     else
       puts "\n#{B_WHITE_BG}#{BLACK}#{SLOW_BLINK}MATCH NUL"
