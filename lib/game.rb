@@ -16,7 +16,9 @@ class Game
     welcome # Welcome message for the players
     (@player1 = Player.new(1, 'X')).ask_name  # Create and ask for Player 1's name
     (@player2 = Player.new(2, 'O')).ask_name  # Create and ask for Player 2's name
+
     puts "\n#{B_RED}#{BOLD}#{RAPID_BLINK}Let's Fight !#{RESET}"
+
     @games = 0
     @current_player = @player1 # The game starts with Player 1's turn
     @board = Board.new # Initialize a new game board
@@ -64,7 +66,7 @@ class Game
 
   # Asks whose turn is next
   def ask_whos_next
-    puts "\nC'est le tour de #{BOLD}#{B_CYAN}#{@current_player.name}#{RESET}"
+    puts "\n#{B_CYAN}C'est le tour de #{BOLD}#{@current_player.name}#{RESET}"
   end
 
   # Shows the current state of the game board
@@ -107,29 +109,32 @@ class Game
   def show_games_played
     @games += 1
 
-    puts "\n#{B_YELLOW}#{@games}#{RESET} partie(s) joué(e)s"
+    puts "\n#{B_CYAN}#{@games} partie(s) joué(e)s#{RESET}"
   end
 
   # Shows the current number of wins for each player
   def show_winning_count
     p1 = @player1
     p2 = @player2
-    p1_color = p1.wins > p2.wins ? B_GREEN : B_RED
-    p2_color = p2.wins > p1.wins ? B_GREEN : B_RED
+    p1_color, p2_color = case p1.wins <=> p2.wins
+    when 1 then [B_GREEN, B_RED]
+    when -1 then [B_RED, B_GREEN]
+    else [B_YELLOW, B_YELLOW]
+    end
 
-    puts  "\n#{p1.name} #{p1_color}#{p1.wins}#{RESET}" \
-          "- #{p2_color}#{p2.wins}#{RESET} #{p2.name}"
+    puts  "#{p1_color}\n#{p1.name} #{p1.wins}#{RESET}" \
+          " #{WHITE}- #{p2_color}#{p2.wins} #{p2.name}#{RESET}"
   end
 
   # Ends the game, declaring the winner or if it's a tie
   def end
     puts "\n#{B_BLUE}#{BOLD}La partie est finie#{RESET}"
-
-    if @winning_player == @player1
+    case @winning_player
+    when @player1
       puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player1.name} a gagné#{RESET}"
 
       @player1.wins += 1
-    elsif @winning_player == @player2
+    when @player2
       puts "\n#{BOLD}#{B_GREEN}#{RAPID_BLINK}#{@player2.name} a gagné#{RESET}"
 
       @player2.wins += 1
