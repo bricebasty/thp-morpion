@@ -16,7 +16,7 @@ class Application
 
     # The main game loop that will keep running as long as players want to replay the game
     while retry_flag
-      game.reset_board # Resets the board at the start of each game
+      game.reset_all # Resets the board at the start of each game
 
       # This loop runs for each round of the game until the game finishes
       until game.finished?

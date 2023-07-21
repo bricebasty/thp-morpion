@@ -25,8 +25,9 @@ class Game
   end
 
   # Resets the game board for a new game
-  def reset_board
+  def reset_all
     @board.reset
+    @winning_player = nil
   end
 
   # Prints a welcome message for the game
@@ -139,7 +140,7 @@ class Game
 
       @player2.wins += 1
     else
-      puts "\n#{B_WHITE_BG}#{BLACK}#{SLOW_BLINK}MATCH NUL"
+      puts "\n#{B_WHITE_BG}#{BLACK}#{SLOW_BLINK}MATCH NUL#{RESET}"
     end
   end
 
